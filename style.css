@@ -10,6 +10,11 @@ body {
     max-width: 300px;
   }
 
+  .img-border-glow.animate {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
   .img-block {
     border: 5px solid rgb(13, 29, 80);
     border-radius: 10px;

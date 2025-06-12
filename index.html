@@ -14,6 +14,11 @@
     <button class="reveal-button" onclick="revealSite()">Abrir presentinho 🎁</button>
   </div>
 
+  <!-- Integração com Spotify -->
+  <div class="d-flex justify-content-center" style="margin-top: 20px;">
+    <iframe style="border-radius:12px;" src="https://open.spotify.com/embed/track/7Gk5OrMYaMRtT2JmgJVAfk?utm_source=generator" width="50%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div></div>
+
   <div class="container text-center py-5">
     <!-- Imagem Central -->
     <div class="d-flex justify-content-center mb-4">
@@ -26,13 +31,13 @@
       transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     }
     .img-border-glow.animate {
-      transform: translateY(-100%);
+      transform: translateX(-10%);
       opacity: 0;
     }
   </style>
 
   <script>
-    const photos = ["NossaFoto.jpg", "primeiraFoto.jpeg"];
+    const photos = ["primeiraFoto.jpg", "primeiraFoto.jpeg"];
     let currentPhotoIndex = 0;
 
     function changePhoto() {
@@ -43,17 +48,17 @@
         currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
         photoFrame.src = photos[currentPhotoIndex];
         photoFrame.classList.remove('animate');
-      }, 500); // Match the transition duration
+      }, 400); // Match the transition duration
     }
 
-    setInterval(changePhoto, 3000); // Change photo every 3 seconds
+    setInterval(changePhoto, 5000); // Change photo every 3 seconds
   </script>
 
     <!-- Título e Parágrafo -->
     <h1 class="mb-3 text-center">Feliz dia dos namorados meu benzinho ❤️❤️</h1>
     <p class="mb-5 text-center">
       Esses últimos meses ao seu lado foram os meses mais felizes da minha vida, não tenho palavras o suficiente para dizer o quanto eu te amo.
-      Espero que a carta que te escrevi tenha te feito sentir o quanto você é especial para mim. E aqui deixo algumas curiosidades sobre nós dois para lembrarmos sempre.
+      Espero que esse presente, mesmo que simples, faça você sentir o quanto te amo e o quanto você é importante pra mim.
     </p>
     <div id="counter" class="text-center mb-5">
       <h2>Estamos juntos há:</h2>
@@ -86,7 +91,7 @@
         <div class="custom-block"><h1> Nosso primeiro encontro     <b style="color: red;">29/11/2024</b></h1></div>
       </div>
       <div class="col-md-6 mb-3">
-        <div class="custom-block"><h1>Nossa primeira foto juntos</h1> <img src="primeiraFoto.jpeg" class="img-block"></div>
+        <div class="custom-block"><h1> Nosso dia <b style="color: red;">14/12/2024</b></h1></div>
       </div>
     </div>
     <div class="row">
@@ -96,15 +101,42 @@
         <div class="text-center"></div>
         <h2>Sara</h2>
         <ul class="list-unstyled">
-        <li><strong>Amor:</strong> 70 vezes</li>
-        <li><strong>Meu bem:</strong> 154 vezes</li>
-        <li><strong>Te amo:</strong> 94 vezes</li>
+          <li><strong>Amor:</strong> <span id="saraAmor">0</span> vezes</li>
+          <li><strong>Meu bem:</strong> <span id="saraMeuBem">0</span> vezes</li>
+          <li><strong>Te amo:</strong> <span id="saraTeAmo">0</span> vezes</li>
         </ul>
         <h2>Fernando</h2>
         <ul class="list-unstyled">
-        <li><strong>Amor:</strong> 14 vezes</li>
-        <li><strong>Meu bem:</strong> 76 vezes</li>
-        <li><strong>Te amo:</strong> 90 vezes</li>
+          <li><strong>Amor:</strong> <span id="fernandoAmor">0</span> vezes</li>
+          <li><strong>Meu bem:</strong> <span id="fernandoMeuBem">0</span> vezes</li>
+          <li><strong>Te amo:</strong> <span id="fernandoTeAmo">0</span> vezes</li>
+        </ul>
+
+        <script>
+          function animateNumber(elementId, targetNumber, duration) {
+            const element = document.getElementById(elementId);
+            let currentNumber = 0;
+            const increment = targetNumber / (duration / 50);
+
+            const interval = setInterval(() => {
+              currentNumber += increment;
+              if (currentNumber >= targetNumber) {
+          currentNumber = targetNumber;
+          clearInterval(interval);
+              }
+              element.textContent = Math.floor(currentNumber);
+            }, 50);
+          }
+
+          document.addEventListener("DOMContentLoaded", () => {
+            animateNumber("saraAmor", 70, 10000);
+            animateNumber("saraMeuBem", 154, 10000);
+            animateNumber("saraTeAmo", 94, 10000);
+            animateNumber("fernandoAmor", 14, 10000);
+            animateNumber("fernandoMeuBem", 76, 10000);
+            animateNumber("fernandoTeAmo", 90, 10000);
+          });
+        </script>
         </ul>
       </div>
       </div>
@@ -112,15 +144,16 @@
       <div class="custom-block text-center">
         <h1>Quem falou primeiro:</h1>
         <ul class="list-unstyled">
-          <li>Amor: 28/11/2024 Sara<strong>: Amore, vou dormir</strong></li>
-          <li>Meu bem: 05/12/2024 Sara<strong>: Meu bem, quanto eu tenho que te passar do rolê de amanhã?</strong></li>
-          <li>Te amo: 06/01/2025 Sara<strong>: Te amoooooooo</strong></li>
-          <li></li>
+          <li><strong style="color: red;">Amor: </strong> 28/11/2024 Sara<strong>: Amore, vou dormir</strong></li>
+          <br>
+          <li><strong style="color: red;">Meu bem: </strong> 05/12/2024 Sara<strong>: Meu bem, quanto eu tenho que te passar do rolê de amanhã?</strong></li>
+          <br>
+          <li><strong style="color: red;">Te amo:</strong> 06/01/2025 Sara<strong>: Te amoooooooo</strong></li>
+          <li>_______________________________________________________________</li>
           <li><p>É, você realmente ganhou em todas as categorias ❤️</p></li>
         </ul>
       </div>
       </div>
-    </div>
   </div>
 
   <script>

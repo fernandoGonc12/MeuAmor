@@ -49,10 +49,10 @@
         currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
         photoFrame.src = photos[currentPhotoIndex];
         photoFrame.classList.remove('animate');
-      }, 400); // Match the transition duration
+      }, 300); // Match the transition duration
     }
 
-    setInterval(changePhoto, 5000); // Change photo every 3 seconds
+    setInterval(changePhoto, 3000); // Change photo every 3 seconds
   </script>
 
     <!-- Título e Parágrafo -->

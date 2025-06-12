@@ -52,6 +52,7 @@ body {
   }
 
   .reveal-button {
+    justify-content: center;
     padding: 20px 40px;
     font-size: 1.5rem;
     background-color: red;

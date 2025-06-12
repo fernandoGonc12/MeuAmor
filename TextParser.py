@@ -71,7 +71,7 @@ def find_first_occurrences(file_path, search_strings):
 if __name__ == "__main__":
     # Example usage
     chat_file = "Conversa do WhatsApp com Benzinho ❤️.txt"  # Replace with your file path
-    search_terms = ["❤️", "Te amo", "Meu bem", "Amor"]  # Replace with your search strings
+    search_terms = ["Te amo", "Meu bem", "Amor"]  # Replace with your search strings
 
     results = parse_whatsapp_chat(chat_file, search_terms)
 

@@ -5,72 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sara & Fernando</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #000;
-      color: #fff;
-    }
-
-    .img-border-glow {
-      border: 5px solid red;
-      border-radius: 10px;
-      box-shadow: 0 0 20px red;
-      max-width: 300px;
-    }
-
-    .custom-block {
-      background-color: rgba(255, 255, 255, 0.05);
-      border: 1px solid #fff;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    /* Tela de abertura */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(10px);
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      transition: opacity 1s ease;
-    }
-
-    .overlay.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .reveal-button {
-      padding: 20px 40px;
-      font-size: 1.5rem;
-      background-color: red;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      box-shadow: 0 0 15px red;
-      transition: transform 0.3s;
-    }
-
-    .reveal-button:hover {
-      transform: scale(1.05);
-    }
-
-    .site-content.hidden {
-      filter: blur(10px);
-      transition: filter 1s ease;
-    }
-
-    .site-content.visible {
-      filter: none;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-dark text-white">
 
@@ -82,31 +17,108 @@
   <div class="container text-center py-5">
     <!-- Imagem Central -->
     <div class="d-flex justify-content-center mb-4">
-      <img src="NossaFoto.jpg" alt="Imagem" class="img-border-glow">
+      <img id="photoFrame" src="NossaFoto.jpg" alt="Imagem" class="img-border-glow">
     </div>
+  </div>
+
+  <style>
+    .img-border-glow {
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    }
+    .img-border-glow.animate {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+    const photos = ["NossaFoto.jpg", "primeiraFoto.jpeg"];
+    let currentPhotoIndex = 0;
+
+    function changePhoto() {
+      const photoFrame = document.getElementById('photoFrame');
+      photoFrame.classList.add('animate');
+
+      setTimeout(() => {
+        currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+        photoFrame.src = photos[currentPhotoIndex];
+        photoFrame.classList.remove('animate');
+      }, 500); // Match the transition duration
+    }
+
+    setInterval(changePhoto, 3000); // Change photo every 3 seconds
+  </script>
 
     <!-- Título e Parágrafo -->
-    <h1 class="mb-3">Feliz dia dos namorados meu benzinho ❤️❤️</h1>
-    <p class="mb-5">
+    <h1 class="mb-3 text-center">Feliz dia dos namorados meu benzinho ❤️❤️</h1>
+    <p class="mb-5 text-center">
       Esses últimos meses ao seu lado foram os meses mais felizes da minha vida, não tenho palavras o suficiente para dizer o quanto eu te amo.
       Espero que a carta que te escrevi tenha te feito sentir o quanto você é especial para mim. E aqui deixo algumas curiosidades sobre nós dois para lembrarmos sempre.
     </p>
+    <div id="counter" class="text-center mb-5">
+      <h2>Estamos juntos há:</h2>
+      <p id="timeElapsed" style="font-size: 1.5rem;"></p>
+    </div>
+
+    <script>
+      const startDate = new Date("2024-12-14T19:00:00"); // Data e hora específicas
+
+      function updateCounter() {
+      const now = new Date();
+      const elapsed = now - startDate;
+
+      const months = Math.floor(elapsed / (1000 * 60 * 60 * 24 * 30));
+      const days = Math.floor((elapsed % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+      document.getElementById("timeElapsed").textContent = 
+        `${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+      }
+
+      setInterval(updateCounter, 1000); // Atualiza a cada segundo
+    </script>
 
     <!-- Blocos em Duas Linhas -->
     <div class="row mb-4">
       <div class="col-md-6 mb-3">
-        <div class="custom-block"><h1> Nosso primeiro encontro</h1><p>Foi dia <b style="color: red;">29/11/2024</b></p></div>
+        <div class="custom-block"><h1> Nosso primeiro encontro     <b style="color: red;">29/11/2024</b></h1></div>
       </div>
       <div class="col-md-6 mb-3">
-        <div class="custom-block">Bloco 2 - Linha 1</div>
+        <div class="custom-block"><h1>Nossa primeira foto juntos</h1> <img src="primeiraFoto.jpeg" class="img-block"></div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 mb-3">
-        <div class="custom-block">Bloco 1 - Linha 2</div>
+      <div class="custom-block text-center">
+        <h1>Quantas vezes enviamos:</h1>
+        <div class="text-center"></div>
+        <h2>Sara</h2>
+        <ul class="list-unstyled">
+        <li><strong>Amor:</strong> 70 vezes</li>
+        <li><strong>Meu bem:</strong> 154 vezes</li>
+        <li><strong>Te amo:</strong> 94 vezes</li>
+        </ul>
+        <h2>Fernando</h2>
+        <ul class="list-unstyled">
+        <li><strong>Amor:</strong> 14 vezes</li>
+        <li><strong>Meu bem:</strong> 76 vezes</li>
+        <li><strong>Te amo:</strong> 90 vezes</li>
+        </ul>
+      </div>
       </div>
       <div class="col-md-6 mb-3">
-        <div class="custom-block">Bloco 2 - Linha 2</div>
+      <div class="custom-block text-center">
+        <h1>Quem falou primeiro:</h1>
+        <ul class="list-unstyled">
+          <li>Amor: 28/11/2024 Sara<strong>: Amore, vou dormir</strong></li>
+          <li>Meu bem: 05/12/2024 Sara<strong>: Meu bem, quanto eu tenho que te passar do rolê de amanhã?</strong></li>
+          <li>Te amo: 06/01/2025 Sara<strong>: Te amoooooooo</strong></li>
+          <li></li>
+          <li><p>É, você realmente ganhou em todas as categorias ❤️</p></li>
+        </ul>
+      </div>
       </div>
     </div>
   </div>
